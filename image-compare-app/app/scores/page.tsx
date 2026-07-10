@@ -67,11 +67,27 @@ export default function ScoresPage() {
             </a>
             <a
               href="/api/scores?format=csv"
-              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md 
-                         bg-white/90 text-stone-900 border border-stone-300 
+              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
+                         bg-white/90 text-stone-900 border border-stone-300
                          hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               Export CSV
+            </a>
+            <a
+              href="/api/comparison_log?format=json"
+              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
+                         bg-white/90 text-stone-900 border border-stone-300
+                         hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              Export Log JSON
+            </a>
+            <a
+              href="/api/comparison_log?format=csv"
+              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
+                         bg-white/90 text-stone-900 border border-stone-300
+                         hover:shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              Export Log CSV
             </a>
             <Link
               href="/compare"

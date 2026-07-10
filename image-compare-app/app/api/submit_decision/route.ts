@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 const FILE_PATH = path.resolve("./data/scores.json");
+const LOG_FILE_PATH = path.resolve("./data/comparison_log.json");
 // ------------------------------------------------------------
 // PATH TO THE JSON FILE
 // ------------------------------------------------------------
@@ -25,6 +26,19 @@ type UserScore = {
   timeVotes: number;
   avgTimeMs: number;
   lastAnsweredAt: string;
+};
+// One entry per individual comparison a user makes: which two images were
+// shown, the ground-truth answer (Same iff imgA === imgB), what the user
+// answered, whether that was correct, and how long they took.
+type ComparisonLogEntry = {
+  username: string | null;
+  imgA: string;
+  imgB: string;
+  expected: number;
+  rating: number;
+  correct: boolean;
+  durationMs: number | null;
+  timestamp: string;
 };
 
 function loadScores(): {
@@ -71,6 +85,38 @@ function saveScores() {
     fs.writeFileSync(FILE_PATH, data, "utf8");
   } catch (err) {
     console.error("Error writing scores.json:", err);
+  }
+}
+
+// ------------------------------------------------------------
+// LOAD / SAVE PER-COMPARISON LOG
+// ------------------------------------------------------------
+function loadComparisonLog(): ComparisonLogEntry[] {
+  if (!fs.existsSync(LOG_FILE_PATH)) {
+    return [];
+  }
+
+  try {
+    const raw = fs.readFileSync(LOG_FILE_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (err) {
+    console.error("Error reading comparison_log.json:", err);
+    return [];
+  }
+}
+
+const comparisonLog: ComparisonLogEntry[] = loadComparisonLog();
+
+function saveComparisonLog() {
+  try {
+    fs.writeFileSync(
+      LOG_FILE_PATH,
+      JSON.stringify(comparisonLog, null, 2),
+      "utf8",
+    );
+  } catch (err) {
+    console.error("Error writing comparison_log.json:", err);
   }
 }
 
@@ -192,17 +238,34 @@ export async function POST(req: Request) {
     updateImageScore(imgA, rating);
     updateImageScore(imgB, rating);
     updatePairScore(imgA, imgB, rating, normalizedDurationMs);
-    if (typeof username === "string" && username.trim()) {
+    const normalizedUsername =
+      typeof username === "string" && username.trim() ? username.trim() : null;
+    if (normalizedUsername) {
       updateUserScore(
-        username.trim(),
+        normalizedUsername,
         rating,
         normalizedDurationMs,
         normalizedTimestamp,
       );
     }
 
+    // Ground truth: the pair is "Same" iff both images are the same file.
+    const expected = imgA === imgB ? 1 : 0;
+    const correct = rating === expected;
+    comparisonLog.push({
+      username: normalizedUsername,
+      imgA,
+      imgB,
+      expected,
+      rating,
+      correct,
+      durationMs: normalizedDurationMs,
+      timestamp: normalizedTimestamp,
+    });
+
     // Save persistent data to disk
     saveScores();
+    saveComparisonLog();
 
     console.log("NEW RATING:", body);
     console.log("IMAGE SCORES:", imageScores);
@@ -211,6 +274,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       status: "ok",
       received: body,
+      correct,
       imageScores,
       pairScores,
       userScores,

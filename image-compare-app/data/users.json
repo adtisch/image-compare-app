@@ -1,19 +1,99 @@
 {
   "users": [
-    { "username": "admin01", "password": "AdminPass01!", "role": "admin" },
-    { "username": "admin02", "password": "AdminPass02!", "role": "admin" },
-    { "username": "admin03", "password": "AdminPass03!", "role": "admin" },
-    { "username": "admin04", "password": "AdminPass04!", "role": "admin" },
-    { "username": "admin05", "password": "AdminPass05!", "role": "admin" },
-    { "username": "admin06", "password": "AdminPass06!", "role": "admin" },
-    { "username": "admin07", "password": "AdminPass07!", "role": "admin" },
-    { "username": "admin08", "password": "AdminPass08!", "role": "admin" },
-    { "username": "admin09", "password": "AdminPass09!", "role": "admin" },
-    { "username": "admin10", "password": "AdminPass10!", "role": "admin" },
-    { "username": "user01", "password": "UserPass01!", "role": "user" },
-    { "username": "user02", "password": "UserPass02!", "role": "user" },
-    { "username": "user03", "password": "UserPass03!", "role": "user" },
-    { "username": "user04", "password": "UserPass04!", "role": "user" },
-    { "username": "user05", "password": "UserPass05!", "role": "user" }
+    {
+      "username": "admin01",
+      "password": "AdminPass01!",
+      "role": "admin"
+    },
+    {
+      "username": "admin02",
+      "password": "AdminPass02!",
+      "role": "admin"
+    },
+    {
+      "username": "admin03",
+      "password": "AdminPass03!",
+      "role": "admin"
+    },
+    {
+      "username": "admin04",
+      "password": "AdminPass04!",
+      "role": "admin"
+    },
+    {
+      "username": "admin05",
+      "password": "AdminPass05!",
+      "role": "admin"
+    },
+    {
+      "username": "admin06",
+      "password": "AdminPass06!",
+      "role": "admin"
+    },
+    {
+      "username": "admin07",
+      "password": "AdminPass07!",
+      "role": "admin"
+    },
+    {
+      "username": "admin08",
+      "password": "AdminPass08!",
+      "role": "admin"
+    },
+    {
+      "username": "admin09",
+      "password": "AdminPass09!",
+      "role": "admin"
+    },
+    {
+      "username": "admin10",
+      "password": "AdminPass10!",
+      "role": "admin"
+    },
+    {
+      "username": "user01",
+      "password": "UserPass01!",
+      "role": "user"
+    },
+    {
+      "username": "user02",
+      "password": "UserPass02!",
+      "role": "user"
+    },
+    {
+      "username": "user03",
+      "password": "UserPass03!",
+      "role": "user"
+    },
+    {
+      "username": "user04",
+      "password": "UserPass04!",
+      "role": "user"
+    },
+    {
+      "username": "user05",
+      "password": "UserPass05!",
+      "role": "user"
+    },
+    {
+      "username": "test_new_user",
+      "password": "password",
+      "role": "user"
+    },
+    {
+      "username": "new_user",
+      "password": "password",
+      "role": "user"
+    },
+    {
+      "username": "test2",
+      "password": "password",
+      "role": "user"
+    },
+    {
+      "username": "test3",
+      "password": "password",
+      "role": "user"
+    }
   ]
 }
