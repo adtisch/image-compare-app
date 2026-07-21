@@ -4458,5 +4458,645 @@
     "correct": true,
     "durationMs": 1825,
     "timestamp": "2026-07-20T14:30:01.450Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 1,
+    "rating": 1,
+    "correct": true,
+    "durationMs": 4095,
+    "timestamp": "2026-07-21T22:25:09.184Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Frisbee.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 3739,
+    "timestamp": "2026-07-21T22:25:13.680Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "expected": 1,
+    "rating": 1,
+    "correct": true,
+    "durationMs": 898,
+    "timestamp": "2026-07-21T22:25:15.149Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Bee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 2165,
+    "timestamp": "2026-07-21T22:25:17.882Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Animals_Hippo.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1193,
+    "timestamp": "2026-07-21T22:25:19.630Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 740,
+    "timestamp": "2026-07-21T22:25:20.913Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 868,
+    "timestamp": "2026-07-21T22:25:22.344Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 1,
+    "rating": 1,
+    "correct": true,
+    "durationMs": 640,
+    "timestamp": "2026-07-21T22:25:23.545Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1877,
+    "timestamp": "2026-07-21T22:25:25.979Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Bee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1175,
+    "timestamp": "2026-07-21T22:25:27.700Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1143,
+    "timestamp": "2026-07-21T22:25:29.431Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Frisbee.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1333,
+    "timestamp": "2026-07-21T22:25:31.333Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 748,
+    "timestamp": "2026-07-21T22:25:32.653Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Farm_WateringCan.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Peanuts.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 537,
+    "timestamp": "2026-07-21T22:25:33.759Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Penguin.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 570,
+    "timestamp": "2026-07-21T22:25:34.873Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 920,
+    "timestamp": "2026-07-21T22:25:36.335Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 807,
+    "timestamp": "2026-07-21T22:25:37.719Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Fruit_Strawberry.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 545,
+    "timestamp": "2026-07-21T22:25:38.841Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Fruit_Strawberry.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 509,
+    "timestamp": "2026-07-21T22:25:39.937Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 521,
+    "timestamp": "2026-07-21T22:25:41.034Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 646,
+    "timestamp": "2026-07-21T22:25:42.243Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 653,
+    "timestamp": "2026-07-21T22:25:43.460Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Objects_Club.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Objects_Spade.png",
+    "expected": 0,
+    "rating": 1,
+    "correct": false,
+    "durationMs": 433,
+    "timestamp": "2026-07-21T22:25:44.473Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 518,
+    "timestamp": "2026-07-21T22:25:45.569Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 531,
+    "timestamp": "2026-07-21T22:25:46.685Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 702,
+    "timestamp": "2026-07-21T22:25:47.948Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 964,
+    "timestamp": "2026-07-21T22:25:49.459Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Sports%26Activities_Basketball.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Vegetables_Artichoke.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 479,
+    "timestamp": "2026-07-21T22:25:50.531Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Hippo.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 600,
+    "timestamp": "2026-07-21T22:25:51.694Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 739,
+    "timestamp": "2026-07-21T22:25:53.000Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 541,
+    "timestamp": "2026-07-21T22:25:54.090Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Animals_Alligator.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Animals_Lizard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1047,
+    "timestamp": "2026-07-21T22:25:55.829Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Animals_Penguin.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 723,
+    "timestamp": "2026-07-21T22:25:57.141Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 1,
+    "rating": 0,
+    "correct": false,
+    "durationMs": 579,
+    "timestamp": "2026-07-21T22:25:58.292Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Penguin.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 880,
+    "timestamp": "2026-07-21T22:25:59.758Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_BaseballGlove.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1061,
+    "timestamp": "2026-07-21T22:26:01.370Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Animals_Mouse.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Animals_Squirrel.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1273,
+    "timestamp": "2026-07-21T22:26:03.207Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 608,
+    "timestamp": "2026-07-21T22:26:04.385Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 545,
+    "timestamp": "2026-07-21T22:26:05.530Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png",
+    "expected": 1,
+    "rating": 0,
+    "correct": false,
+    "durationMs": 591,
+    "timestamp": "2026-07-21T22:26:06.717Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 772,
+    "timestamp": "2026-07-21T22:26:08.068Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Waffle.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Fruit_Pear.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1558,
+    "timestamp": "2026-07-21T22:27:24.917Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 982,
+    "timestamp": "2026-07-21T22:27:26.279Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 873,
+    "timestamp": "2026-07-21T22:27:27.542Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 1,
+    "rating": 1,
+    "correct": true,
+    "durationMs": 728,
+    "timestamp": "2026-07-21T22:27:28.646Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Fruit_Strawberry.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Frisbee.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 951,
+    "timestamp": "2026-07-21T22:27:29.967Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 635,
+    "timestamp": "2026-07-21T22:27:30.977Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 603,
+    "timestamp": "2026-07-21T22:27:32.002Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 610,
+    "timestamp": "2026-07-21T22:27:33.029Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "expected": 1,
+    "rating": 1,
+    "correct": true,
+    "durationMs": 662,
+    "timestamp": "2026-07-21T22:27:34.092Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_School_Calculator.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 950,
+    "timestamp": "2026-07-21T22:27:35.459Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 733,
+    "timestamp": "2026-07-21T22:27:36.586Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 538,
+    "timestamp": "2026-07-21T22:27:37.530Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Hippo.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 522,
+    "timestamp": "2026-07-21T22:27:38.447Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 1,
+    "rating": 0,
+    "correct": false,
+    "durationMs": 743,
+    "timestamp": "2026-07-21T22:27:39.585Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Manatee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Animals_Penguin.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 726,
+    "timestamp": "2026-07-21T22:27:40.679Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Bee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Objects_Lipstick.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 33076,
+    "timestamp": "2026-07-21T22:28:14.169Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Objects_Club.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Objects_Spade.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 2203,
+    "timestamp": "2026-07-21T22:28:16.743Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_School_Pen%26Ink.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 812,
+    "timestamp": "2026-07-21T22:28:17.965Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Bee.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1002,
+    "timestamp": "2026-07-21T22:28:19.353Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 461,
+    "timestamp": "2026-07-21T22:28:20.255Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 1085,
+    "timestamp": "2026-07-21T22:28:21.735Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Similar_Pictographs/Pictograph_Farm_WateringCan.png",
+    "imgB": "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Peanuts.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 728,
+    "timestamp": "2026-07-21T22:28:22.875Z"
+  },
+  {
+    "username": "admin01",
+    "imgA": "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png",
+    "imgB": "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png",
+    "expected": 0,
+    "rating": 0,
+    "correct": true,
+    "durationMs": 643,
+    "timestamp": "2026-07-21T22:28:23.942Z"
   }
 ]
