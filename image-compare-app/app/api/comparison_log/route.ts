@@ -1,7 +1,6 @@
 export const runtime = "nodejs";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { ensureSchema, query } from "@/lib/db";
 
 type ComparisonLogEntry = {
   username: string | null;
@@ -14,19 +13,34 @@ type ComparisonLogEntry = {
   timestamp: string;
 };
 
-function loadComparisonLog(): ComparisonLogEntry[] {
-  const filePath = path.resolve("./data/comparison_log.json");
-  if (!fs.existsSync(filePath)) {
-    return [];
-  }
+async function loadComparisonLog(): Promise<ComparisonLogEntry[]> {
+  await ensureSchema();
 
-  try {
-    const raw = fs.readFileSync(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
+  const result = await query<{
+    username: string | null;
+    img_a: string;
+    img_b: string;
+    expected: number;
+    rating: number;
+    correct: boolean;
+    duration_ms: number | null;
+    timestamp: Date;
+  }>(
+    `SELECT username, img_a, img_b, expected, rating, correct, duration_ms, "timestamp"
+     FROM comparison_log
+     ORDER BY id ASC`,
+  );
+
+  return result.rows.map((row) => ({
+    username: row.username,
+    imgA: row.img_a,
+    imgB: row.img_b,
+    expected: row.expected,
+    rating: row.rating,
+    correct: row.correct,
+    durationMs: row.duration_ms,
+    timestamp: row.timestamp.toISOString(),
+  }));
 }
 
 function filename(value: string) {
@@ -62,7 +76,7 @@ function toCsv(entries: ComparisonLogEntry[]) {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const format = (searchParams.get("format") || "json").toLowerCase();
-  const entries = loadComparisonLog();
+  const entries = await loadComparisonLog();
 
   if (format === "csv") {
     const csv = toCsv(entries);

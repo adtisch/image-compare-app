@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="42%" r="65%">
+    <radialGradient id="bg" cx="50%" cy="30%" r="75%">
       <stop offset="0%" stop-color="#FFF6EC"/>
       <stop offset="100%" stop-color="#FDE4CE"/>
     </radialGradient>
@@ -13,9 +13,17 @@
       <stop offset="0%" stop-color="#8A5A34"/>
       <stop offset="100%" stop-color="#5C3A20"/>
     </linearGradient>
-    <linearGradient id="onesie" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="shirt" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#9AD6F0"/>
       <stop offset="100%" stop-color="#5FB4DC"/>
+    </linearGradient>
+    <linearGradient id="pants" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7FA8CB"/>
+      <stop offset="100%" stop-color="#557FA6"/>
+    </linearGradient>
+    <linearGradient id="shoe" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C98B5E"/>
+      <stop offset="100%" stop-color="#A66B41"/>
     </linearGradient>
     <radialGradient id="cheek" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#F4948B" stop-opacity="0.75"/>
@@ -23,31 +31,55 @@
     </radialGradient>
   </defs>
 
-  <circle cx="100" cy="100" r="98" fill="url(#bg)"/>
+  <rect x="1" y="1" width="198" height="398" rx="28" fill="url(#bg)"/>
 
-  <path d="M52 178 Q100 205 148 178 L148 150 Q100 168 52 150 Z" fill="url(#onesie)"/>
-  <circle cx="100" cy="150" r="7" fill="#EDEDED" opacity="0.8"/>
+  <!-- legs -->
+  <rect x="66" y="275" width="30" height="85" rx="14" fill="url(#pants)"/>
+  <rect x="104" y="275" width="30" height="85" rx="14" fill="url(#pants)"/>
 
-  <ellipse cx="100" cy="108" rx="52" ry="56" fill="url(#skin)"/>
+  <!-- shoes -->
+  <ellipse cx="80" cy="368" rx="20" ry="12" fill="url(#shoe)"/>
+  <ellipse cx="120" cy="368" rx="20" ry="12" fill="url(#shoe)"/>
 
-  <path d="M46 88 Q46 34 100 30 Q154 34 154 88 Q154 70 137 66 Q120 76 100 68 Q80 76 63 66 Q46 70 46 88 Z" fill="url(#hair)"/>
-  <path d="M46 88 Q40 96 45 106" stroke="#5C3A20" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <path d="M154 88 Q160 96 155 106" stroke="#5C3A20" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- arms -->
+  <rect x="34" y="165" width="30" height="35" rx="14" fill="url(#shirt)"/>
+  <rect x="38" y="196" width="20" height="55" rx="10" fill="url(#skin)"/>
+  <circle cx="48" cy="256" r="11" fill="url(#skin)"/>
 
-  <ellipse cx="66" cy="112" rx="22" ry="20" fill="url(#cheek)"/>
-  <ellipse cx="134" cy="112" rx="22" ry="20" fill="url(#cheek)"/>
+  <rect x="136" y="165" width="30" height="35" rx="14" fill="url(#shirt)"/>
+  <rect x="142" y="196" width="20" height="55" rx="10" fill="url(#skin)"/>
+  <circle cx="152" cy="256" r="11" fill="url(#skin)"/>
+
+  <!-- torso / t-shirt -->
+  <rect x="58" y="160" width="84" height="115" rx="24" fill="url(#shirt)"/>
+
+  <!-- blank graphic panel on the t-shirt (comparison image overlays here) -->
+  <rect x="68" y="185" width="64" height="64" rx="8" fill="#FBFEFF" stroke="#5FB4DC" stroke-width="2" opacity="0.9"/>
+
+  <!-- neck -->
+  <rect x="88" y="140" width="24" height="25" fill="url(#skin)"/>
+
+  <!-- head -->
+  <ellipse cx="100" cy="95" rx="52" ry="56" fill="url(#skin)"/>
+
+  <path d="M46 75 Q46 21 100 17 Q154 21 154 75 Q154 57 137 53 Q120 63 100 55 Q80 63 63 53 Q46 57 46 75 Z" fill="url(#hair)"/>
+  <path d="M46 75 Q40 83 45 93" stroke="#5C3A20" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M154 75 Q160 83 155 93" stroke="#5C3A20" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <ellipse cx="66" cy="99" rx="22" ry="20" fill="url(#cheek)"/>
+  <ellipse cx="134" cy="99" rx="22" ry="20" fill="url(#cheek)"/>
 
   <g>
-    <ellipse cx="78" cy="104" rx="7.5" ry="9" fill="#3A2A1A"/>
-    <ellipse cx="122" cy="104" rx="7.5" ry="9" fill="#3A2A1A"/>
-    <circle cx="80.5" cy="100.5" r="2.4" fill="#FFFFFF"/>
-    <circle cx="124.5" cy="100.5" r="2.4" fill="#FFFFFF"/>
-    <path d="M67 92 Q78 85 89 92" stroke="#5C3A20" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M111 92 Q122 85 133 92" stroke="#5C3A20" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="78" cy="91" rx="7.5" ry="9" fill="#3A2A1A"/>
+    <ellipse cx="122" cy="91" rx="7.5" ry="9" fill="#3A2A1A"/>
+    <circle cx="80.5" cy="87.5" r="2.4" fill="#FFFFFF"/>
+    <circle cx="124.5" cy="87.5" r="2.4" fill="#FFFFFF"/>
+    <path d="M67 79 Q78 72 89 79" stroke="#5C3A20" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M111 79 Q122 72 133 79" stroke="#5C3A20" stroke-width="3" fill="none" stroke-linecap="round"/>
   </g>
 
-  <path d="M92 118 Q100 124 108 118" stroke="#B5764F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <path d="M84 130 Q100 144 116 130 Q100 152 84 130 Z" fill="#B5504A"/>
+  <path d="M92 105 Q100 111 108 105" stroke="#B5764F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M84 117 Q100 131 116 117 Q100 139 84 117 Z" fill="#B5504A"/>
 
-  <ellipse cx="100" cy="128" rx="3.5" ry="2.5" fill="#E8A97A" opacity="0.7"/>
+  <ellipse cx="100" cy="115" rx="3.5" ry="2.5" fill="#E8A97A" opacity="0.7"/>
 </svg>

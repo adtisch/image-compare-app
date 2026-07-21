@@ -57,11 +57,11 @@ export default function Home() {
     leftTimerRef.current = window.setTimeout(() => {
       setImgA(pair.imgA);
       leftTimerRef.current = null;
-    }, 100);
+    }, 25);
     bottleTimerRef.current = window.setTimeout(() => {
       setShowBottle(true);
       bottleTimerRef.current = null;
-    }, 275);
+    }, 350);
     revealTimerRef.current = window.setTimeout(() => {
       setImgB(pair.imgB);
       pairStartRef.current = performance.now();
@@ -89,8 +89,8 @@ export default function Home() {
     const differentPairs = Array.isArray(data.differentPairs)
       ? data.differentPairs
       : [];
-    const targetCount = 80;
-    const selfPairCount = Math.max(1, Math.round(targetCount * 0.1));
+    const targetCount = 100;
+    const selfPairCount = Math.max(1, Math.round(targetCount * 0.5));
     const baseCount = Math.max(0, targetCount - selfPairCount);
     const shuffledDifferent = shufflePairs(differentPairs);
     let selected = [...similarPairs];
@@ -147,7 +147,7 @@ export default function Home() {
 
     setAnswersCount((prev) => {
       const next = prev + 1;
-      if (next >= 80 || next >= pairs.length) {
+      if (next >= 100 || next >= pairs.length) {
         setFinished(true);
         return next;
       }
@@ -310,46 +310,54 @@ export default function Home() {
         Image Comparison
       </h1>
 
-      <div className="flex flex-col sm:flex-row gap-6 sm:gap-[13.5rem] items-center">
-        {[
-          { src: imgA, icon: "/baby.svg", label: "Baby", showIcon: showBaby },
-          {
-            src: imgB,
-            icon: "/bottle.svg",
-            label: "Bottle",
-            showIcon: showBottle,
-          },
-        ].map(({ src, icon, label, showIcon }, idx) => (
-          <div key={idx} className="flex flex-col items-center gap-3">
-            <div
-              className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300
-                         rounded-full overflow-hidden shadow-xl flex items-center justify-center"
-            >
-              {!loading && showIcon ? (
-                <img
-                  src={icon}
-                  alt={label}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="animate-pulse w-full h-full bg-stone-200" />
-              )}
-            </div>
-            <div
-              className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300
-                         rounded-full overflow-hidden shadow-xl flex items-center justify-center"
-            >
-              {!loading && src ? (
-                <img
-                  src={src}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              ) : (
-                <div className="animate-pulse w-full h-full bg-stone-200" />
-              )}
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-col sm:flex-row gap-[3.75rem] sm:gap-36 items-center">
+        {/* Baby, with the left comparison image overlaid on its t-shirt */}
+        <div
+          className="relative w-[15rem] h-[30rem] sm:w-[18rem] sm:h-[36rem] bg-white/80 backdrop-blur-sm border border-stone-300
+                     rounded-2xl overflow-hidden shadow-xl"
+        >
+          {!loading && showBaby ? (
+            <img
+              src="/baby.svg"
+              alt="Baby"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="animate-pulse w-full h-full bg-stone-200" />
+          )}
+          {!loading && showBaby && imgA && (
+            <img
+              src={imgA}
+              className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2
+                         w-[32%] h-[16%] object-cover rounded-md shadow-md
+                         transition-transform duration-300 hover:scale-105"
+            />
+          )}
+        </div>
+
+        {/* Bottle, with the right comparison image overlaid on its middle */}
+        <div
+          className="relative w-[15rem] h-[30rem] sm:w-[18rem] sm:h-[36rem] bg-white/80 backdrop-blur-sm border border-stone-300
+                     rounded-2xl overflow-hidden shadow-xl"
+        >
+          {!loading && showBottle ? (
+            <img
+              src="/bottle.svg"
+              alt="Bottle"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="animate-pulse w-full h-full bg-stone-200" />
+          )}
+          {!loading && showBottle && imgB && (
+            <img
+              src={imgB}
+              className="absolute left-1/2 top-[59%] -translate-x-1/2 -translate-y-1/2
+                         w-[32%] h-[16%] object-cover rounded-md shadow-md
+                         transition-transform duration-300 hover:scale-105"
+            />
+          )}
+        </div>
       </div>
 
       {/* -------------------------------------------------------

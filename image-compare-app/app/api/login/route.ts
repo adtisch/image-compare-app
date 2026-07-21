@@ -1,36 +1,11 @@
 export const runtime = "nodejs";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-type UserRecord = {
-  username: string;
-  password: string;
-  role: "admin" | "user";
-};
-
-type UsersFile = {
-  users: UserRecord[];
-};
-
-const USERS_PATH = path.resolve("./data/users.json");
-
-function loadUsers(): UsersFile {
-  if (!fs.existsSync(USERS_PATH)) {
-    return { users: [] };
-  }
-
-  try {
-    const raw = fs.readFileSync(USERS_PATH, "utf8");
-    return JSON.parse(raw) as UsersFile;
-  } catch (err) {
-    console.error("Error reading users.json:", err);
-    return { users: [] };
-  }
-}
+import { ensureSchema, query } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
+    await ensureSchema();
+
     const body = await req.json();
     const { username, password } = body as {
       username?: string;
@@ -44,19 +19,19 @@ export async function POST(req: Request) {
       );
     }
 
-    const { users } = loadUsers();
-    const user = users.find(
-      (entry) => entry.username === username && entry.password === password,
+    const result = await query<{ role: "admin" | "user" }>(
+      "SELECT role FROM users WHERE username = $1 AND password = $2",
+      [username, password],
     );
 
-    if (!user) {
+    if (result.rows.length === 0) {
       return NextResponse.json(
         { error: "Invalid credentials" },
         { status: 401 },
       );
     }
 
-    return NextResponse.json({ status: "ok", role: user.role });
+    return NextResponse.json({ status: "ok", role: result.rows[0].role });
   } catch (err) {
     console.error("Error processing login:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });

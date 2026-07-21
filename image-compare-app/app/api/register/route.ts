@@ -1,36 +1,11 @@
 export const runtime = "nodejs";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-type UserRecord = {
-  username: string;
-  password: string;
-  role: "admin" | "user";
-};
-
-type UsersFile = {
-  users: UserRecord[];
-};
-
-const USERS_PATH = path.resolve("./data/users.json");
-
-function loadUsers(): UsersFile {
-  if (!fs.existsSync(USERS_PATH)) {
-    return { users: [] };
-  }
-
-  try {
-    const raw = fs.readFileSync(USERS_PATH, "utf8");
-    return JSON.parse(raw) as UsersFile;
-  } catch (err) {
-    console.error("Error reading users.json:", err);
-    return { users: [] };
-  }
-}
+import { ensureSchema, query } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
+    await ensureSchema();
+
     const body = await req.json();
     const { username, password } = body as {
       username?: string;
@@ -46,18 +21,25 @@ export async function POST(req: Request) {
       );
     }
 
-    const { users } = loadUsers();
-    const exists = users.some((entry) => entry.username === trimmedUsername);
-
-    if (exists) {
-      return NextResponse.json(
-        { error: "Username already taken." },
-        { status: 409 },
+    try {
+      await query(
+        `INSERT INTO users (username, password, role) VALUES ($1, $2, 'user')`,
+        [trimmedUsername, password],
       );
+    } catch (err) {
+      if (
+        err &&
+        typeof err === "object" &&
+        "code" in err &&
+        (err as { code?: string }).code === "23505"
+      ) {
+        return NextResponse.json(
+          { error: "Username already taken." },
+          { status: 409 },
+        );
+      }
+      throw err;
     }
-
-    users.push({ username: trimmedUsername, password, role: "user" });
-    fs.writeFileSync(USERS_PATH, JSON.stringify({ users }, null, 2));
 
     return NextResponse.json({ status: "ok", role: "user" });
   } catch (err) {
