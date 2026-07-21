@@ -18,10 +18,27 @@ export default function Home() {
   const [role, setRole] = useState<Role | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const pairStartRef = useRef<number | null>(null);
+  const revealTimerRef = useRef<number | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [pairs, setPairs] = useState<Pair[]>([]);
   const [pairIndex, setPairIndex] = useState(0);
   const [showReminder, setShowReminder] = useState(false);
+
+  // Show the left image immediately, then reveal the right image after a
+  // short delay. The response timer starts only once the right image appears.
+  function showPair(pair: Pair) {
+    if (revealTimerRef.current !== null) {
+      window.clearTimeout(revealTimerRef.current);
+    }
+    setImgA(pair.imgA);
+    setImgB(null);
+    pairStartRef.current = null;
+    revealTimerRef.current = window.setTimeout(() => {
+      setImgB(pair.imgB);
+      pairStartRef.current = performance.now();
+      revealTimerRef.current = null;
+    }, 500);
+  }
 
   function shufflePairs(list: Pair[]) {
     const shuffled = [...list];
@@ -71,9 +88,7 @@ export default function Home() {
     setPairs(selected);
     setPairIndex(0);
     if (selected.length > 0) {
-      setImgA(selected[0].imgA);
-      setImgB(selected[0].imgB);
-      pairStartRef.current = performance.now();
+      showPair(selected[0]);
     } else {
       setImgA(null);
       setImgB(null);
@@ -110,9 +125,7 @@ export default function Home() {
       const nextPair = pairs[next];
       if (nextPair) {
         setPairIndex(next);
-        setImgA(nextPair.imgA);
-        setImgB(nextPair.imgB);
-        pairStartRef.current = performance.now();
+        showPair(nextPair);
       }
       return next;
     });
@@ -124,6 +137,14 @@ export default function Home() {
       loadTest();
     }
   }, [started, finished, pairs.length]);
+
+  useEffect(() => {
+    return () => {
+      if (revealTimerRef.current !== null) {
+        window.clearTimeout(revealTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!started || finished || loading || !imgA || !imgB) {
@@ -251,21 +272,35 @@ export default function Home() {
         Image Comparison
       </h1>
 
-      <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center">
-        {[imgA, imgB].map((src, idx) => (
-          <div
-            key={idx}
-            className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300 
-                       rounded-full overflow-hidden shadow-xl flex items-center justify-center"
-          >
-            {!loading && src ? (
+      <div className="flex flex-col sm:flex-row gap-6 sm:gap-[13.5rem] items-center">
+        {[
+          { src: imgA, icon: "/baby.svg", label: "Baby" },
+          { src: imgB, icon: "/bottle.svg", label: "Bottle" },
+        ].map(({ src, icon, label }, idx) => (
+          <div key={idx} className="flex flex-col items-center gap-3">
+            <div
+              className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300
+                         rounded-full overflow-hidden shadow-xl flex items-center justify-center"
+            >
               <img
-                src={src}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                src={icon}
+                alt={label}
+                className="w-full h-full object-cover"
               />
-            ) : (
-              <div className="animate-pulse w-full h-full bg-stone-200" />
-            )}
+            </div>
+            <div
+              className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300
+                         rounded-full overflow-hidden shadow-xl flex items-center justify-center"
+            >
+              {!loading && src ? (
+                <img
+                  src={src}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              ) : (
+                <div className="animate-pulse w-full h-full bg-stone-200" />
+              )}
+            </div>
           </div>
         ))}
       </div>
