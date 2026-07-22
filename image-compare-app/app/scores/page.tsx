@@ -1,7 +1,10 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import ScoresAuthGate from "./AuthGate";
+import { ensureSchema, query } from "@/lib/db";
+
+// Scores change on every submission; skip static prerendering so this page
+// always reflects the live DB instead of a build-time (or stale) snapshot.
+export const dynamic = "force-dynamic";
 
 type ScoreEntry = {
   total: number;
@@ -16,18 +19,32 @@ type ScoresFile = {
   pairScores: Record<string, ScoreEntry>;
 };
 
-function loadScores(): ScoresFile {
-  const filePath = path.resolve("./data/scores.json");
-  if (!fs.existsSync(filePath)) {
-    return { imageScores: {}, pairScores: {} };
+async function loadScores(): Promise<ScoresFile> {
+  await ensureSchema();
+
+  const pairRows = await query<{
+    pair_key: string;
+    total: number;
+    votes: number;
+    total_time_ms: number;
+    time_votes: number;
+  }>(
+    "SELECT pair_key, total, votes, total_time_ms, time_votes FROM pair_scores",
+  );
+
+  const pairScores: ScoresFile["pairScores"] = {};
+  for (const row of pairRows.rows) {
+    pairScores[row.pair_key] = {
+      total: row.total,
+      votes: row.votes,
+      totalTimeMs: row.total_time_ms,
+      timeVotes: row.time_votes,
+      avgTimeMs:
+        row.time_votes > 0 ? Math.round(row.total_time_ms / row.time_votes) : 0,
+    };
   }
 
-  try {
-    const raw = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(raw) as ScoresFile;
-  } catch {
-    return { imageScores: {}, pairScores: {} };
-  }
+  return { imageScores: {}, pairScores };
 }
 
 function parsePairKey(key: string) {
@@ -44,8 +61,8 @@ function parsePairKey(key: string) {
   return { imgA: getFilename(parts[0] || ""), imgB: getFilename(parts[1] || "") };
 }
 
-export default function ScoresPage() {
-  const { pairScores } = loadScores();
+export default async function ScoresPage() {
+  const { pairScores } = await loadScores();
   const entries = Object.entries(pairScores);
 
   return (
@@ -59,8 +76,8 @@ export default function ScoresPage() {
           <div className="flex items-center gap-3">
             <a
               href="/api/scores?format=json"
-              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md 
-                         bg-white/90 text-stone-900 border border-stone-300 
+              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
+                         bg-white/90 text-stone-900 border border-stone-300
                          hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               Export JSON
@@ -91,8 +108,8 @@ export default function ScoresPage() {
             </a>
             <Link
               href="/compare"
-              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md 
-                         bg-white/90 text-stone-900 border border-stone-300 
+              className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
+                         bg-white/90 text-stone-900 border border-stone-300
                          hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               Back to comparison
