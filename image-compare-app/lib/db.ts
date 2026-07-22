@@ -17,11 +17,17 @@ function getPool(): Pool {
     return globalForPg.pgPool;
   }
 
+  // Vercel Marketplace storage integrations (e.g. Neon) prefix their env vars
+  // with the resource's name to avoid collisions between multiple connected
+  // databases, e.g. STORAGE_DATABASE_URL instead of plain DATABASE_URL.
   const connectionString =
-    process.env.DATABASE_URL || process.env.POSTGRES_URL;
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.STORAGE_DATABASE_URL ||
+    process.env.STORAGE_POSTGRES_URL;
   if (!connectionString) {
     throw new Error(
-      "DATABASE_URL (or POSTGRES_URL) is not set. Add a Postgres connection string to the environment.",
+      "No Postgres connection string found in the environment. Checked DATABASE_URL, POSTGRES_URL, STORAGE_DATABASE_URL, STORAGE_POSTGRES_URL.",
     );
   }
 
