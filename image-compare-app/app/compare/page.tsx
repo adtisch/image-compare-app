@@ -53,20 +53,20 @@ export default function Home() {
     babyTimerRef.current = window.setTimeout(() => {
       setShowBaby(true);
       babyTimerRef.current = null;
-    }, 25);
+    }, 0);
     leftTimerRef.current = window.setTimeout(() => {
       setImgA(pair.imgA);
       leftTimerRef.current = null;
-    }, 25);
+    }, 0);
     bottleTimerRef.current = window.setTimeout(() => {
       setShowBottle(true);
       bottleTimerRef.current = null;
-    }, 350);
+    }, 0);
     revealTimerRef.current = window.setTimeout(() => {
       setImgB(pair.imgB);
       pairStartRef.current = performance.now();
       revealTimerRef.current = null;
-    }, 350);
+    }, 0);
   }
 
   function shufflePairs(list: Pair[]) {
