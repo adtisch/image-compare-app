@@ -34,6 +34,36 @@
   animation: fadeIn 0.8s ease-out;
 }
 
+@keyframes shrinkBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-timerbar {
+  animation-name: shrinkBar;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes growFill {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(9);
+  }
+}
+
+.animate-growFill {
+  animation-name: growFill;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

@@ -107,12 +107,12 @@ export default async function ScoresPage() {
               Export Log CSV
             </a>
             <Link
-              href="/compare"
+              href="/admin"
               className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md
                          bg-white/90 text-stone-900 border border-stone-300
                          hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
-              Back to comparison
+              Back to menu
             </Link>
           </div>
         </div>
