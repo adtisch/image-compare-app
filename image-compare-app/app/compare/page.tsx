@@ -232,6 +232,27 @@ export default function Home() {
     return result;
   }
 
+  // When two consecutive "Different" trials share an image, flip the second
+  // trial's sides so the shared image switches sides — e.g. hippo|boot then
+  // hippo|bus becomes hippo|boot then bus|hippo. This stops a repeated image
+  // from sitting still on one side across trials. "Same" trials (identical
+  // images on both sides) are exempt: if either trial is one, nothing moves.
+  // A single flip always suffices: the pair can't be identical to its
+  // predecessor (separateRepeats runs first), so if both of its images match
+  // the previous trial's they already sit on opposite sides.
+  function alternateRepeatedSides(list: Pair[]) {
+    const result = [...list];
+    for (let i = 1; i < result.length; i += 1) {
+      const prev = result[i - 1];
+      const cur = result[i];
+      if (prev.imgA === prev.imgB || cur.imgA === cur.imgB) continue;
+      if (prev.imgA === cur.imgA || prev.imgB === cur.imgB) {
+        result[i] = { imgA: cur.imgB, imgB: cur.imgA };
+      }
+    }
+    return result;
+  }
+
   // Zips two (already-shuffled) lists into strict alternation — a, b, a, b,
   // … — so the user sees Same and Different trials back-to-back rather than
   // whatever streaks a plain random shuffle happens to produce. Falls back
@@ -278,11 +299,13 @@ export default function Home() {
               imagePool[Math.floor(Math.random() * imagePool.length)];
             return { imgA: img, imgB: img };
           });
-    const selected = separateRepeats(
-      (Math.random() < 0.5
-        ? alternatePairs(sameTrials, differentTrials)
-        : alternatePairs(differentTrials, sameTrials)
-      ).slice(0, TRAINING_COUNT),
+    const selected = alternateRepeatedSides(
+      separateRepeats(
+        (Math.random() < 0.5
+          ? alternatePairs(sameTrials, differentTrials)
+          : alternatePairs(differentTrials, sameTrials)
+        ).slice(0, TRAINING_COUNT),
+      ),
     );
     setTrainingPairs(selected);
     setTrainingIndex(0);
@@ -335,8 +358,10 @@ export default function Home() {
           });
     // Random order for the real data-collection trials (unlike the
     // practice round, which strictly alternates Same/Different).
-    selected = separateRepeats(
-      shufflePairs([...selected, ...selfPairs]).slice(0, targetCount),
+    selected = alternateRepeatedSides(
+      separateRepeats(
+        shufflePairs([...selected, ...selfPairs]).slice(0, targetCount),
+      ),
     );
     setPairs(selected);
     setPairIndex(0);
