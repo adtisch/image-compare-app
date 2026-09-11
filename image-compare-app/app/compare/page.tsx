@@ -76,6 +76,11 @@ export default function Home() {
   const bottleTimerRef = useRef<number | null>(null);
   const overdueTimerRef = useRef<number | null>(null);
   const revealTokenRef = useRef(0);
+  // State mirror of revealTokenRef. Every trial bumps it, so the reveal
+  // effect below re-runs once per trial even when the new pair's URLs are
+  // identical to the previous pair's (a ref change alone would not re-run
+  // an effect, and identical URLs leave imgA/imgB unchanged).
+  const [trialKey, setTrialKey] = useState(0);
   // The flash is driven imperatively through these refs rather than through
   // React state: a state-driven show/hide 50 ms apart can be committed by
   // React without the browser ever painting the visible frame, which makes
@@ -133,6 +138,7 @@ export default function Home() {
     setSelectionOverdue(false);
     pairStartRef.current = null;
     revealTokenRef.current += 1;
+    setTrialKey(revealTokenRef.current);
     answeringRef.current = false;
     babyTimerRef.current = window.setTimeout(() => {
       setShowBaby(true);
@@ -192,6 +198,40 @@ export default function Home() {
     return shuffled;
   }
 
+  function samePair(a: Pair, b: Pair) {
+    return a.imgA === b.imgA && a.imgB === b.imgB;
+  }
+
+  // Reorders a list so no trial repeats the identical pair of its
+  // predecessor. Showing the same pair twice in a row leaves imgA/imgB state
+  // unchanged between trials, so the reveal effect never re-runs, the
+  // pictographs never appear, and nothing gets recorded. Repeats only arise
+  // from the randomly drawn self-pairs (the server's lists are unique), so a
+  // repeat is swapped with the nearest later trial that fits both of its
+  // neighbours; the rest of the order is left untouched.
+  function separateRepeats(list: Pair[]) {
+    const result = [...list];
+    const fits = (index: number) => {
+      const prev = result[index - 1];
+      const next = result[index + 1];
+      return (
+        (!prev || !samePair(result[index], prev)) &&
+        (!next || !samePair(result[index], next))
+      );
+    };
+    for (let i = 1; i < result.length; i += 1) {
+      if (!samePair(result[i], result[i - 1])) continue;
+      for (let step = 1; step < result.length; step += 1) {
+        // Try later positions first, then wrap around to earlier ones.
+        const j = (i + step) % result.length;
+        [result[i], result[j]] = [result[j], result[i]];
+        if (fits(i) && fits(j)) break;
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+    }
+    return result;
+  }
+
   // Zips two (already-shuffled) lists into strict alternation — a, b, a, b,
   // … — so the user sees Same and Different trials back-to-back rather than
   // whatever streaks a plain random shuffle happens to produce. Falls back
@@ -238,11 +278,12 @@ export default function Home() {
               imagePool[Math.floor(Math.random() * imagePool.length)];
             return { imgA: img, imgB: img };
           });
-    const selected = (
-      Math.random() < 0.5
+    const selected = separateRepeats(
+      (Math.random() < 0.5
         ? alternatePairs(sameTrials, differentTrials)
         : alternatePairs(differentTrials, sameTrials)
-    ).slice(0, TRAINING_COUNT);
+      ).slice(0, TRAINING_COUNT),
+    );
     setTrainingPairs(selected);
     setTrainingIndex(0);
     trainingIndexRef.current = 0;
@@ -294,7 +335,9 @@ export default function Home() {
           });
     // Random order for the real data-collection trials (unlike the
     // practice round, which strictly alternates Same/Different).
-    selected = shufflePairs([...selected, ...selfPairs]).slice(0, targetCount);
+    selected = separateRepeats(
+      shufflePairs([...selected, ...selfPairs]).slice(0, targetCount),
+    );
     setPairs(selected);
     setPairIndex(0);
     setAnswersCount(0);
@@ -378,7 +421,10 @@ export default function Home() {
   // wait for the browser to have them decoded and then reveal them. Running
   // this from an effect guarantees the DOM nodes exist before we touch them;
   // showBaby/showBottle are in the guard because the <img> tags only render
-  // once those are true.
+  // once those are true. trialKey is a dependency so a trial that shows the
+  // very same URLs as the one before it still gets revealed: showPair's
+  // null-then-value updates can be batched into a single render in which
+  // imgA/imgB never appear to change.
   useEffect(() => {
     if (loading || !imgA || !imgB || !showBaby || !showBottle) return;
     const token = revealTokenRef.current;
@@ -390,7 +436,7 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [imgA, imgB, loading, showBaby, showBottle]);
+  }, [trialKey, imgA, imgB, loading, showBaby, showBottle]);
 
   useEffect(() => {
     if (started && !trainingComplete && trainingPairs.length === 0) {
